@@ -8,6 +8,9 @@ export default ({
     activeItem,
     ...props
 }) => {
+    if (activeItem && tags.indexOf(activeItem) === -1) {
+        tags.push(activeItem)
+    }
     return <Tags tags={tags.map(item => ({
         name: map(item),
         value: item
