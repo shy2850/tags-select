@@ -1,0 +1,223 @@
+[
+    {
+        "name": "设备标识类",
+        "children": [
+            {
+                "name": "IMSI(国际移动用户识别码)",
+                "value": "imsi"
+            },
+            {
+                "name": "IMEI(国际移动装备辨识码)",
+                "value": "imei"
+            },
+            {
+                "name": "40字节ios设备唯一标识",
+                "value": "udid"
+            },
+            {
+                "name": "用户手机号",
+                "value": "phone_num"
+            },
+            {
+                "name": "MAC(网卡物理地址)",
+                "value": "mac"
+            },
+            {
+                "name": "ip地址",
+                "value": "ip"
+            },
+            {
+                "name": "内网IP",
+                "value": "ip_int"
+            },
+            {
+                "name": "外网IP",
+                "value": "ip_ext"
+            }
+        ]
+    },
+    {
+        "name": "设备特征类",
+        "children": [
+            {
+                "name": "系统类型",
+                "value": "os_type"
+            },
+            {
+                "name": "系统版本号",
+                "value": "os_version"
+            },
+            {
+                "name": "手机品牌",
+                "value": "mobile_brand"
+            },
+            {
+                "name": "手机型号",
+                "value": "mobile_model"
+            },
+            {
+                "name": "手机品牌和型号",
+                "value": "mobile_brand_model"
+            },
+            {
+                "name": "手机运营商",
+                "value": "operator"
+            },
+            {
+                "name": "手机CPU品牌",
+                "value": "cpu_brand"
+            },
+            {
+                "name": "手机CPU型号",
+                "value": "cpu_model"
+            },
+            {
+                "name": "手机屏幕",
+                "value": "scrn"
+            },
+            {
+                "name": "手机屏幕-高度",
+                "value": "scrn_h"
+            },
+            {
+                "name": "手机屏幕-宽度",
+                "value": "scrn_w"
+            },
+            {
+                "name": "手机联网类型",
+                "value": "access_net"
+            }
+        ]
+    },
+    {
+        "name": "用户信息类",
+        "children": [
+            {
+                "name": "广告标识符",
+                "value": "idfa"
+            },
+            {
+                "name": "用户ID",
+                "value": "uid"
+            },
+            {
+                "name": "Token(用户令牌)",
+                "value": "token"
+            },
+            {
+                "name": "用户名",
+                "value": "username"
+            },
+            {
+                "name": "姓名",
+                "value": "realname"
+            },
+            {
+                "name": "昵称",
+                "value": "nickname"
+            },
+            {
+                "name": "用户密码",
+                "value": "password"
+            },
+            {
+                "name": "用户性别",
+                "value": "gender"
+            },
+            {
+                "name": "用户年龄",
+                "value": "age"
+            },
+            {
+                "name": "用户身份证号码",
+                "value": "id_card_num"
+            },
+            {
+                "name": "用户邮箱",
+                "value": "emali"
+            },
+            {
+                "name": "座机号码",
+                "value": "tele_num"
+            }
+        ]
+    },
+    {
+        "name": "位置信息类",
+        "children": [
+            {
+                "name": "地理位置",
+                "value": "location"
+            },
+            {
+                "name": "地理位置-纬度",
+                "value": "latitude"
+            },
+            {
+                "name": "地理位置-经度",
+                "value": "longitude"
+            },
+            {
+                "name": "省份",
+                "value": "province"
+            },
+            {
+                "name": "城市",
+                "value": "city"
+            },
+            {
+                "name": "地址",
+                "value": "address"
+            },
+            {
+                "name": "邮编",
+                "value": "post_code"
+            }
+        ]
+    },
+    {
+        "name": "其他",
+        "children": [
+            {
+                "name": "应用版本",
+                "value": "app_version"
+            },
+            {
+                "name": "文件名称",
+                "value": "file_name"
+            },
+            {
+                "name": "标题",
+                "value": "title"
+            },
+            {
+                "name": "商品ID",
+                "value": "product_id"
+            },
+            {
+                "name": "订单ID",
+                "value": "order_id"
+            },
+            {
+                "name": "文件路径",
+                "value": "file_path"
+            },
+            {
+                "name": "发送者",
+                "value": "sender"
+            },
+            {
+                "name": "接收者",
+                "value": "receiver"
+            },
+            {
+                "name": "操作",
+                "value": "action"
+            },
+            {
+                "name": "内容",
+                "value": "content"
+            }
+        ]
+    }
+]

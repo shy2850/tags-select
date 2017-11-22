@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "module": "amd",
+        "pretty": true,
+        "jsx": "react"
+    },
+    "include": [
+        "src/*.ts",
+        "src/*.tsx"
+    ]
+}

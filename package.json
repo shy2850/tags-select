@@ -1,0 +1,32 @@
+{
+  "name": "tags-select",
+  "version": "0.1.0",
+  "description": "tags select for ensure flowpp props",
+  "main": "index.js",
+  "scripts": {
+    "install": "cp -rf ./node_modules/font-awesome/fonts ./",
+    "start": "f2e start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shy2850/tags-select.git"
+  },
+  "author": "shy2850",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shy2850/tags-select/issues"
+  },
+  "homepage": "https://github.com/shy2850/tags-select#readme",
+  "dependencies": {
+    "bulma": "^0.6.1",
+    "f2e-middle-typescript": "^0.2.2",
+    "f2e-server": "^2.6.6",
+    "font-awesome": "^4.7.0",
+    "mysql": "^2.15.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "requirejs": "^2.3.5",
+    "typescript": "^2.6.1"
+  }
+}
