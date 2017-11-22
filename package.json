@@ -20,8 +20,8 @@
   "homepage": "https://github.com/shy2850/tags-select#readme",
   "dependencies": {
     "bulma": "^0.6.1",
-    "f2e-middle-typescript": "^0.2.2",
-    "f2e-server": "^2.6.6",
+    "f2e-middle-typescript": "^0.3.2",
+    "f2e-server": "^2.6.7",
     "font-awesome": "^4.7.0",
     "mysql": "^2.15.0",
     "react": "^16.1.1",

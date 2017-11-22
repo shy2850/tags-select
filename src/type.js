@@ -1,4 +1,4 @@
-define([
+define('type', [
     'exports'
 ], function(exports) {
     'use strict';
