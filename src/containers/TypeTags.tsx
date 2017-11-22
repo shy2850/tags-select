@@ -9,7 +9,7 @@ export default ({
     ...props
 }) => {
     return <Tags tags={tags.map(item => ({
-        name: map[item],
+        name: map(item),
         value: item
     }))} onSelect={onSelect} activeItem={activeItem} {...props}/>
 }
