@@ -14,6 +14,9 @@ export default ({
     }
 
     const maxPage = Math.ceil(total / pageSize)
+    const goPage = e => {
+        toPage(e.target.previousElementSibling.children[0].value | 0)
+    }
 
     return <nav className="pagination" role="navigation" aria-label="pagination">
         <ul className="pagination-list">
@@ -25,6 +28,16 @@ export default ({
             </li>
             <li>
                 <span className="pagination-link button" disabled={pageNo === maxPage} onClick={e => toPage(++pageNo)}>下一页</span>
+            </li>
+            <li style={{marginLeft: 20}}>
+                <div className="field has-addons">
+                    <p className="control">
+                        <span className={`button is-${theme}`} onClick={goPage}>Go</span>
+                    </p>
+                    <p className="control">
+                        <input className="button" type="text" defaultValue={pageNo} style={{width: 48}}/>
+                    </p>
+                </div>       
             </li>
         </ul>
     </nav>
