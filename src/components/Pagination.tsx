@@ -50,7 +50,7 @@ export default ({
                             className="button"
                             type="number" min="1" max={maxPage}
                             defaultValue={pageNo}
-                            style={{width: 48}}
+                            style={{width: 100}}
                             onKeyDown={onKeyDown}
                             onChange={onChange}/>
                     </p>
