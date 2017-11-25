@@ -114,6 +114,9 @@ export default class extends React.Component {
                 data,
                 activeIndex
             } = t.state
+
+            console.log(e.keyCode)
+            let keyCodeBase = 97
             switch (e.keyCode) {
                 case 37:
                     t.toPage(pageNo - 1)
@@ -134,8 +137,12 @@ export default class extends React.Component {
                 case 49:
                 case 50:
                 case 51:
+                    keyCodeBase = 49
+                case 97:
+                case 98:
+                case 99:
                     const { id = 0, tags = '' } = data[activeIndex] || {}
-                    let tag = tags.split(/\W+/)[e.keyCode - 49]
+                    let tag = tags.split(/\W+/)[e.keyCode - keyCodeBase]
                     if (id) {
                         t.changeTag(id, tag)
                         t.setState({
