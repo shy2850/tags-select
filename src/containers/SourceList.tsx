@@ -33,25 +33,39 @@ export default class extends React.Component {
         const t = this
         const { data } = t.state
         const changeTag = t.changeTag.bind(t)
-        return <table className="table is-bordered is-fullwidth">
+        return <table className="table is-fullwidth is-bordered is-middle">
+            <colgroup style={{width: '5%'}}></colgroup>
+            <colgroup style={{width: '12%'}}></colgroup>
+            <colgroup style={{width: '18%'}}></colgroup>
+            <colgroup style={{width: '10%'}}></colgroup>
+            <colgroup style={{width: '55%'}}></colgroup>
             <thead>
                 <tr>
                     <th>id</th>
                     <th>name</th>
                     <th>value</th>
-                    <th>url</th>
-                    <th>tags</th>
                     <th>more tags</th>
+                    <th>url</th>
                 </tr>
             </thead>
             <tbody>
                 {data.map(({id, name, value, url, tags, tag}) => <tr key={`${id}`}>
                     <td>{id}</td>
-                    <td>{name}</td>
-                    <td>{value}</td>
-                    <td>{url}</td>
-                    <td><Tags tags={tags.match(/\w+/g)} activeItem={tag} onSelect={t => changeTag(id, t === tag ? '' : t)}/></td>
+                    <td colspan="2" className="is-no-padding">
+                        <table className="table is-fullwidth is-no-border">
+                            <colgroup style={{width: '40%'}}></colgroup>
+                            <colgroup style={{width: '60%'}}></colgroup>
+                            <tr>
+                                <td>{name}</td>
+                                <td>{value}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><Tags tags={tags.match(/\w+/g)} activeItem={tag} onSelect={t => changeTag(id, t === tag ? '' : t)}/></td>
+                            </tr>
+                        </table>
+                    </td>
                     <td><TypeDropdown activeItem={tag} onSelect={t => changeTag(id, t === tag ? '' : t)}/></td>
+                    <td>{url}</td>
                 </tr>)}
             </tbody>
         </table>

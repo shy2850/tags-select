@@ -7,7 +7,7 @@ export default ({
     onSelect = e => {},
     activeItem
 }) => Dropdown({
-    content: <Tags tags={tags} onSelect={onSelect} activeItem={activeItem} style={{
+    content: <Tags tags={tags.sort()} onSelect={onSelect} activeItem={activeItem} style={{
         paddingLeft: 10,
         width: 360
     }}/>,
