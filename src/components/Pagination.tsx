@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Input from './Input'
 
 const emptyFn = (page) => {}
 export default ({
@@ -14,10 +15,20 @@ export default ({
     }
 
     const maxPage = Math.ceil(total / pageSize)
-    const goPage = e => {
-        toPage(e.target.previousElementSibling.children[0].value | 0)
+    const goPage = () => {
+        toPage(pageNo)
     }
-
+    const onChange = e => {
+        pageNo = e.target.value | 0
+    }
+    const onKeyDown = e => {
+        console.log(e.keyCode)
+        switch (e.keyCode) {
+            case 13:
+                goPage()
+                break
+        }
+    }
     return <nav className="pagination" role="navigation" aria-label="pagination">
         <ul className="pagination-list">
             <li>
@@ -35,7 +46,13 @@ export default ({
                         <span className={`button is-${theme}`} onClick={goPage}>Go</span>
                     </p>
                     <p className="control">
-                        <input className="button" type="text" defaultValue={pageNo} style={{width: 48}}/>
+                        <Input
+                            className="button"
+                            type="number" min="1" max={maxPage}
+                            defaultValue={pageNo}
+                            style={{width: 48}}
+                            onKeyDown={onKeyDown}
+                            onChange={onChange}/>
                     </p>
                 </div>       
             </li>
