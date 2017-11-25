@@ -115,7 +115,6 @@ export default class extends React.Component {
                 activeIndex
             } = t.state
 
-            console.log(e.keyCode)
             let keyCodeBase = 97
             switch (e.keyCode) {
                 case 37:

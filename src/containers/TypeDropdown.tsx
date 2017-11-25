@@ -12,7 +12,7 @@ export default ({
             <label className="tag is-white">{name}</label>
         </dt>
         <dd className="column">
-            <Tags tags={children.sort()} onSelect={onSelect} activeItem={activeItem} style={{
+            <Tags tags={children} onSelect={onSelect} activeItem={activeItem} style={{
                 paddingLeft: 10
             }}/>
         </dd>

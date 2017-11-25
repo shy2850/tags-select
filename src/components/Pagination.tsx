@@ -22,7 +22,6 @@ export default ({
         pageNo = e.target.value | 0
     }
     const onKeyDown = e => {
-        console.log(e.keyCode)
         switch (e.keyCode) {
             case 13:
                 goPage()
