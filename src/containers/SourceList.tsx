@@ -136,7 +136,12 @@ export default class extends React.Component {
                 case 51:
                     const { id = 0, tags = '' } = data[activeIndex] || {}
                     let tag = tags.split(/\W+/)[e.keyCode - 49]
-                    id && t.changeTag(id, tag)
+                    if (id) {
+                        t.changeTag(id, tag)
+                        t.setState({
+                            activeIndex: Math.min(activeIndex + 1, pageSize - 1)
+                        })
+                    }
                     return
             }
         })
