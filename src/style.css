@@ -1,6 +1,11 @@
 $include['../node_modules/bulma/css/bulma.css']
 $include['../node_modules/font-awesome/css/font-awesome.min.css']
 
+.is-active,
+.is-active table {
+    color: #fff;
+    background: hsl(0, 0%, 40%);
+}
 .is-middle th,
 .is-middle td {
     vertical-align: middle;

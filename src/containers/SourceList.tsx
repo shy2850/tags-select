@@ -13,7 +13,8 @@ export default class extends React.Component {
             pageSize: 10,
             pageNo: 1,
             total: 20,
-            data: []
+            data: [],
+            activeIndex: 0
         }
     }
     renderPager () {
@@ -31,8 +32,9 @@ export default class extends React.Component {
     }
     renderTable () {
         const t = this
-        const { data } = t.state
+        const { data, activeIndex } = t.state
         const changeTag = t.changeTag.bind(t)
+        const changeActive = t.changeActive.bind(this)
         return <table className="table is-fullwidth is-bordered is-middle">
             <colgroup style={{width: '5%'}}></colgroup>
             <colgroup style={{width: '12%'}}></colgroup>
@@ -49,8 +51,10 @@ export default class extends React.Component {
                 </tr>
             </thead>
             <tbody>
-                {data.map(({id, name, value, url, tags, tag}) => <tr key={`${id}`}>
-                    <td>{id}</td>
+                {data.map(({id, name, value, url, tags, tag}, index) => <tr key={`${id}`}
+                    onClick={e => changeActive(index)}
+                    className={activeIndex === index ? 'is-active' : ''}>
+                    <td>{!tag ? id : <span className="tag is-small is-primary"><i className="fa fa-check"/></span>}</td>
                     <td colspan="2" className="is-no-padding">
                         <table className="table is-fullwidth is-no-border">
                             <colgroup style={{width: '40%'}}></colgroup>
@@ -74,7 +78,14 @@ export default class extends React.Component {
         const t = this
         const { pageSize } = t.state
         const { toPage } = t.props
-        pageNo = pageNo || t.state.pageNo
+        
+        if (pageNo && pageNo !== t.state.pageNo) {
+            t.setState({
+                activeIndex: 0
+            })
+        } else {
+            pageNo = t.state.pageNo
+        }
         toPage(pageNo, pageSize).then(res => t.setState({
             pageNo,
             ...res
@@ -88,8 +99,47 @@ export default class extends React.Component {
             t.toPage(toPage)
         })
     }
+    changeActive (index) {
+        this.setState({
+            activeIndex: index
+        })
+    }
     componentDidMount () {
-        this.toPage(this.state.pageNo)
+        const t = this
+        t.toPage(t.state.pageNo)
+        document.addEventListener('keydown', e => {
+            const {
+                pageNo,
+                pageSize,
+                data,
+                activeIndex
+            } = t.state
+            switch (e.keyCode) {
+                case 37:
+                    t.toPage(pageNo - 1)
+                    break
+                case 39:
+                    t.toPage(pageNo + 1)
+                    break
+                case 38:
+                    t.setState({
+                        activeIndex: Math.max(0, activeIndex - 1)
+                    })
+                    break
+                case 40:
+                    t.setState({
+                        activeIndex: Math.min(activeIndex + 1, pageSize - 1)
+                    })
+                    break
+                case 49:
+                case 50:
+                case 51:
+                    const { id = 0, tags = '' } = data[activeIndex] || {}
+                    let tag = tags.split(/\W+/)[e.keyCode - 49]
+                    id && t.changeTag(id, tag)
+                    return
+            }
+        })
     }
     render () {
         const t = this
