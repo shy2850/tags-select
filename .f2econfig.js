@@ -3,7 +3,7 @@ const build = argv[argv.length - 1] === 'build'
 const getModuleId = pathname => pathname.replace('src/', '')
 const { onRoute } = require('./serve/index')
 module.exports = {
-    port: 5555,
+    port: 443,
     livereload: !build,
     build,
     gzip: true,

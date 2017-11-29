@@ -1,8 +1,17 @@
 import * as React from 'react'
 import Tags from '../containers/TypeTags'
 import Pager from '../components/Pagination'
+import Modal from '../components/Modal'
 import TypeDropdown from './TypeDropdown'
 
+const webkitSpeechRecognition = window['webkitSpeechRecognition']
+const INFO = <pre>{`您的浏览器支持语音识别操作: 
+【下一条】: 切换下一条 
+【上一条】: 切换上一条
+【上一页】: 回到前页
+【下一页】: 去下一页
+【第*页】: 跳转到第N页
+【1】【2】【3】: 选择标签`}</pre>
 export default class extends React.Component {
     state
     setState
@@ -104,9 +113,73 @@ export default class extends React.Component {
             activeIndex: index
         })
     }
+    initSpeechRecognition () {
+        const t = this
+        let recognition = new webkitSpeechRecognition()
+        // recognition.continuous = true
+        // recognition.interimResults = true
+        recognition.lang = 'cmn-Hans-CN'
+        recognition.onresult = e => {
+            const {
+                pageNo,
+                pageSize,
+                data,
+                activeIndex
+            } = t.state
+            const word = e.results[e.results.length - 1][0].transcript
+            console.log(word)
+            switch (word) {
+            case '1':
+            case '一':
+            case '2':
+            case '二':
+            case '3':
+            case '三':
+                let index = '0一二三'.indexOf(word)
+                index = index < 1 ? (word | 0) : index
+                const { id = 0, tags = '' } = data[activeIndex] || {}
+                let tag = tags.split(/\W+/)[index - 1]
+                if (id) {
+                    t.changeTag(id, tag)
+                    t.setState({
+                        activeIndex: Math.min(activeIndex + 1, pageSize - 1)
+                    })
+                }
+                break
+            case '上一条':
+                t.setState({
+                    activeIndex: Math.max(0, activeIndex - 1)
+                })
+                break
+            case '下一条':
+                t.setState({
+                    activeIndex: Math.min(activeIndex + 1, pageSize - 1)
+                })
+                break
+            case '上一页':
+                t.toPage(pageNo - 1)
+                break
+            case '下一页':
+                t.toPage(pageNo + 1)
+                break
+            default:
+                let p
+                if (p = word.match(/[去第到](\d+)页/)) {
+                    t.toPage(p[1])
+                }
+            }
+        }
+        recognition.onend = e => {  
+            t.initSpeechRecognition()
+        }
+        recognition.start()
+    }
     componentDidMount () {
         const t = this
         t.toPage(t.state.pageNo)
+        if (webkitSpeechRecognition) {
+            t.initSpeechRecognition()
+        }
         document.addEventListener('keydown', e => {
             const {
                 pageNo,
@@ -159,7 +232,8 @@ export default class extends React.Component {
                 {t.renderPager()}
             </div>,
             t.renderTable(),
-            t.renderPager()
+            t.renderPager(),
+            !!webkitSpeechRecognition && <Modal active={true}>{INFO}</Modal>
         ]
     }
 }
