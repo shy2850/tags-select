@@ -181,6 +181,11 @@ export default class extends React.Component {
             t.initSpeechRecognition()
         }
         document.addEventListener('keydown', e => {
+            const { tagName } = e.srcElement
+            if (tagName && tagName.toUpperCase() === 'INPUT') {
+                e.stopPropagation()
+                return
+            }
             const {
                 pageNo,
                 pageSize,
