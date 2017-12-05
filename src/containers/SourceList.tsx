@@ -4,7 +4,7 @@ import Pager from '../components/Pagination'
 import Modal from '../components/Modal'
 import TypeDropdown from './TypeDropdown'
 
-const webkitSpeechRecognition = window['webkitSpeechRecognition']
+const webkitSpeechRecognition = false && window['webkitSpeechRecognition']
 const INFO = <pre>{`您的浏览器支持语音识别操作: 
 【下一条】: 切换下一条 
 【上一条】: 切换上一条
