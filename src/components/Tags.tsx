@@ -10,5 +10,5 @@ export default ({
         key={`${i}`}
         onClick={e => onSelect(value)}
         className={`tag${activeItem === value ? ' is-primary' : ''}`}
-        title={name}>{value}</a>)}
+        title={value}>{name}</a>)}
 </div>

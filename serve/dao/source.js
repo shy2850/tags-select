@@ -1,9 +1,12 @@
 
 const conn = require ('../db/connect')
 const SQL = {
-    count: () => `select count(1) from source`,
-    query: ({pageSize = 20, pageNo = 1}) => `select * from source limit ${pageSize * (pageNo - 1) || 0},${pageSize | 0}`,
-    updateTag: (id, tag = '') => `update source set tag="${tag.toString().substring(0, 32).replace(/\W/g, '')}" where id=${id | 0}`
+    count: () => `select count(1) from data`,
+    query: ({pageSize = 20, pageNo = 1}) => `select * from data limit ${pageSize * (pageNo - 1) || 0},${pageSize | 0}`,
+    updateTag: (id, tag = '') => {
+		tag = tag ? `"${tag.toString().substring(0, 32).replace(/\W/g, '')}"` : null
+		return `update data set tag=${tag} where id=${id | 0}`
+	}
 }
 const SQLPromise = sql => new Promise((resolve, reject) => conn.query(sql, (error, rs) => {
     if (error) {

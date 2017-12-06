@@ -11,6 +11,10 @@
                 "value": "imei"
             },
             {
+                "name": "ICCID(SIM卡标识码)",
+                "value": "iccid"
+            },
+            {
                 "name": "40字节ios设备唯一标识",
                 "value": "udid"
             },
@@ -176,6 +180,27 @@
         ]
     },
     {
+        "name": "动作",
+        "children": [
+            {
+                "name": "操作",
+                "value": "action"
+            },
+            {
+                "name": "栏目",
+                "value": "channel"
+            },
+            {
+                "name": "SDK版本",
+                "value": "sdk_version"
+            },
+            {
+                "name": "内容",
+                "value": "content"
+            }
+        ]
+    },
+    {
         "name": "其他",
         "children": [
             {
@@ -183,8 +208,12 @@
                 "value": "app_version"
             },
             {
-                "name": "文件名称",
+                "name": "应用文件名称",
                 "value": "file_name"
+            },
+            {
+                "name": "license",
+                "value": "license"
             },
             {
                 "name": "标题",
@@ -211,12 +240,12 @@
                 "value": "receiver"
             },
             {
-                "name": "操作",
-                "value": "action"
+                "name": "时间戳",
+                "value": "timestamp"
             },
             {
-                "name": "内容",
-                "value": "content"
+                "name": "URL",
+                "value": "url"
             },
             {
                 "name": "未知",

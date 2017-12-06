@@ -3,6 +3,7 @@ import Tags from '../containers/TypeTags'
 import Pager from '../components/Pagination'
 import Modal from '../components/Modal'
 import TypeDropdown from './TypeDropdown'
+import Parse from '../parser/index'
 
 const webkitSpeechRecognition = false && window['webkitSpeechRecognition']
 const INFO = <pre>{`您的浏览器支持语音识别操作: 
@@ -20,7 +21,7 @@ export default class extends React.Component {
         super(props)
         this.state = {
             pageSize: 10,
-            pageNo: 1,
+            pageNo: props.pageNo | 1,
             total: 20,
             data: [],
             activeIndex: 0
@@ -70,7 +71,7 @@ export default class extends React.Component {
                             <colgroup style={{width: '60%'}}></colgroup>
                             <tr>
                                 <td>{name}</td>
-                                <td>{value}</td>
+                                <td>{Parse(value)}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"><Tags tags={tags.match(/\w+/g)} activeItem={tag} onSelect={t => changeTag(id, t === tag ? '' : t)}/></td>
@@ -78,7 +79,7 @@ export default class extends React.Component {
                         </table>
                     </td>
                     <td><TypeDropdown activeItem={tag} onSelect={t => changeTag(id, t === tag ? '' : t)}/></td>
-                    <td>{url}</td>
+                    <td title={url}><div style={{overflow: 'auto'}}>{url}</div></td>
                 </tr>)}
             </tbody>
         </table>
@@ -115,7 +116,7 @@ export default class extends React.Component {
     }
     initSpeechRecognition () {
         const t = this
-        let recognition = new webkitSpeechRecognition()
+        let recognition = new window['webkitSpeechRecognition']()
         // recognition.continuous = true
         // recognition.interimResults = true
         recognition.lang = 'cmn-Hans-CN'
