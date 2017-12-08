@@ -17,6 +17,7 @@ export default class extends React.Component {
     state
     setState
     props
+    refs
     constructor(props) {
         super(props)
         this.state = {
@@ -60,8 +61,9 @@ export default class extends React.Component {
                     <th>url</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody ref="list">
                 {data.map(({id, name, value, url, tags, tag}, index) => <tr key={`${id}`}
+                    tabIndex="1"
                     onClick={e => changeActive(index)}
                     className={activeIndex === index ? 'is-active' : ''}>
                     <td>{!tag ? id : <span className="tag is-small is-primary"><i className="fa fa-check"/></span>}</td>
@@ -90,9 +92,7 @@ export default class extends React.Component {
         const { toPage } = t.props
         
         if (pageNo && pageNo !== t.state.pageNo) {
-            t.setState({
-                activeIndex: 0
-            })
+            t.changeActive(0)
         } else {
             pageNo = t.state.pageNo
         }
@@ -113,6 +113,10 @@ export default class extends React.Component {
         this.setState({
             activeIndex: index
         })
+        const { list } = this.refs
+        if (list && list.children[index]) {
+            list.children[index].focus()
+        }
     }
     initSpeechRecognition () {
         const t = this
@@ -142,20 +146,14 @@ export default class extends React.Component {
                 let tag = tags.split(/\W+/)[index - 1]
                 if (id) {
                     t.changeTag(id, tag)
-                    t.setState({
-                        activeIndex: Math.min(activeIndex + 1, pageSize - 1)
-                    })
+                    t.changeActive(Math.min(activeIndex + 1, pageSize - 1))
                 }
                 break
             case '上一条':
-                t.setState({
-                    activeIndex: Math.max(0, activeIndex - 1)
-                })
+                t.changeActive(Math.max(0, activeIndex - 1))
                 break
             case '下一条':
-                t.setState({
-                    activeIndex: Math.min(activeIndex + 1, pageSize - 1)
-                })
+                t.changeActive(Math.min(activeIndex + 1, pageSize - 1))
                 break
             case '上一页':
                 t.toPage(pageNo - 1)
@@ -203,14 +201,10 @@ export default class extends React.Component {
                     t.toPage(pageNo + 1)
                     break
                 case 38:
-                    t.setState({
-                        activeIndex: Math.max(0, activeIndex - 1)
-                    })
+                    t.changeActive(Math.max(0, activeIndex - 1))
                     break
                 case 40:
-                    t.setState({
-                        activeIndex: Math.min(activeIndex + 1, pageSize - 1)
-                    })
+                    t.changeActive(Math.min(activeIndex + 1, pageSize - 1))
                     break
                 case 49:
                 case 50:
@@ -223,9 +217,7 @@ export default class extends React.Component {
                     let tag = tags.split(/\W+/)[e.keyCode - keyCodeBase]
                     if (id) {
                         t.changeTag(id, tag)
-                        t.setState({
-                            activeIndex: Math.min(activeIndex + 1, pageSize - 1)
-                        })
+                        t.changeActive(Math.min(activeIndex + 1, pageSize - 1))
                     }
                     return
             }

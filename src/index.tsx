@@ -18,6 +18,6 @@ const toPage = (pageNo = PAGE_NUM, pageSize = 20) => fetch(`/source?pageNo=${pag
 })
 const changeTag = (id, tag)=> fetch(`/source?id=${id}&tag=${tag}`, {method: 'PUT'})
 
-ReactDOM.render(<div className="container">
+ReactDOM.render(
 	<SourceList toPage={toPage} changeTag={changeTag} pageNo={PAGE_NUM}/>
-</div>, document.body)
+, document.body)

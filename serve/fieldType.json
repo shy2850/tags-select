@@ -20,7 +20,8 @@
             },
             {
                 "name": "用户手机号",
-                "value": "phone_num"
+                "value": "phone_num",
+                "keys": ["mobile"]
             },
             {
                 "name": "MAC(网卡物理地址)",
@@ -45,7 +46,8 @@
         "children": [
             {
                 "name": "系统类型",
-                "value": "os_type"
+                "value": "os_type",
+                "keys": ["plantform", "mobile_type"]
             },
             {
                 "name": "系统版本号",
@@ -53,7 +55,8 @@
             },
             {
                 "name": "手机品牌",
-                "value": "mobile_brand"
+                "value": "mobile_brand",
+                "keys": ["device"]
             },
             {
                 "name": "手机型号",
@@ -77,19 +80,23 @@
             },
             {
                 "name": "手机屏幕",
-                "value": "scrn"
+                "value": "scrn",
+                "keys": ["screen"]
             },
             {
                 "name": "手机屏幕-高度",
-                "value": "scrn_h"
+                "value": "scrn_h",
+                "keys": ["height", "h"]
             },
             {
                 "name": "手机屏幕-宽度",
-                "value": "scrn_w"
+                "value": "scrn_w",
+                "keys": ["width", "w"]
             },
             {
                 "name": "手机联网类型",
-                "value": "access_net"
+                "value": "access_net",
+                "keys": ["network", "nw"]
             }
         ]
     },
@@ -106,7 +113,8 @@
             },
             {
                 "name": "Token(用户令牌)",
-                "value": "token"
+                "value": "token",
+                "keys": ["key"]
             },
             {
                 "name": "用户名",
@@ -196,7 +204,8 @@
             },
             {
                 "name": "内容",
-                "value": "content"
+                "value": "content",
+                "keys": ["keyword", "kw", "word"]
             }
         ]
     },
@@ -208,7 +217,11 @@
                 "value": "app_version"
             },
             {
-                "name": "应用文件名称",
+                "name": "应用名称",
+                "value": "app_name"
+            },
+            {
+                "name": "文件名称",
                 "value": "file_name"
             },
             {
@@ -241,7 +254,8 @@
             },
             {
                 "name": "时间戳",
-                "value": "timestamp"
+                "value": "timestamp",
+                "keys": ["t"]
             },
             {
                 "name": "URL",
