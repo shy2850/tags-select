@@ -47,16 +47,17 @@
             {
                 "name": "系统类型",
                 "value": "os_type",
-                "keys": ["plantform", "mobile_type"]
+                "keys": ["plantform", "mobile_type", "pf", "sys"]
             },
             {
                 "name": "系统版本号",
-                "value": "os_version"
+                "value": "os_version",
+                "keys": ["osv"]
             },
             {
                 "name": "手机品牌",
                 "value": "mobile_brand",
-                "keys": ["device"]
+                "keys": ["device", "mf"]
             },
             {
                 "name": "手机型号",
@@ -64,7 +65,8 @@
             },
             {
                 "name": "手机品牌和型号",
-                "value": "mobile_brand_model"
+                "value": "mobile_brand_model",
+                "keys": ["sv", "sver"]
             },
             {
                 "name": "手机运营商",
@@ -214,7 +216,8 @@
         "children": [
             {
                 "name": "应用版本",
-                "value": "app_version"
+                "value": "app_version",
+                "keys": ["appver"]
             },
             {
                 "name": "应用名称",
@@ -260,6 +263,11 @@
             {
                 "name": "URL",
                 "value": "url"
+            },
+            {
+                "name": "语言",
+                "value": "language",
+                "keys": ["lan"]
             },
             {
                 "name": "未知",

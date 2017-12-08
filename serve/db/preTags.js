@@ -11,15 +11,13 @@ const map = list.reduce((m, {children}) =>  {
 
 module.exports = (name, value) => {
     let tags = []
-    if (/^screen/.test(name)) {
-        tags.push('scrn')
-    } else if (/^15(\d{8}|\d{11})\.?(\d+)?$/.test(value) || /^2017-?\d/.test(value)) {
+    if (/^15(\d{8}|\d{11})\.?(\d+)?$/.test(value) || /^2017-?\d/.test(value)) {
         tags.push('timestamp')
     } else if (/^http:\/\//.test(value)) {
         tags.push('url')
     } else if (/wifi\b/i.test(value)) {
         tags.push('access_net')
-    } else if (/^\d+(\.\d{1,3})$/.test(value)) {
+    } else if (/^\d+(\.\d{1,3}){3}$/.test(value)) {
         tags.push(/^(10|172|192)\./.test(value) ? 'ip_int' : 'ip_ext')
     }
 
@@ -31,13 +29,9 @@ module.exports = (name, value) => {
             tags.push(tag)
         } else if (!t.indexOf(name + '_') || name.length > 1 && !t.indexOf(name)) {
             tags.push(tag)
-        } else if (t.indexOf(name) !== -1) {
-            if (name.length > 5) {
-                tags.push(tag)
-            } else {
-                tags.push(tag)
-            }
-        } else if (name.indexOf(t) !== -1) {
+        } else if (name.length > 2 && t.indexOf(name) !== -1) {
+            tags.push(tag)
+        } else if (t.length > 2 && name.indexOf(t) !== -1) {
             tags.push(tag)
         }
     }
